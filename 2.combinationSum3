@@ -1,0 +1,18 @@
+class Solution:
+    def combinationSum3(self, k: int, n: int) -> List[List[int]]:
+        ans = []
+        def combinatioSUm(num,temp_list,target):
+            #base condition
+            if(len(temp_list) == k):
+                if target == 0:
+                    ans.append(temp_list)
+                return 
+
+            for i in range(num+1,10):
+                if(i<=target):
+                    combinatioSUm(i,temp_list+[i],target-i)
+                else:
+                    return 
+
+        combinatioSUm(0,[],n)
+        return ans
