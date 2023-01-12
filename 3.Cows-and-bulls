@@ -1,0 +1,8 @@
+class Solution:
+    def getHint(self, secret: str, guess: str) -> str:
+        Bulls = sum([x==y for x,y in zip(secret, guess)])
+        Count_secret = Counter(secret)
+        Count_guess = Counter(guess)
+        Bulls_C = sum([min(Count_secret[ele], Count_guess[ele]) for ele in Count_secret])
+        return str(Bulls) + "A" + str(Bulls_C-Bulls) + "B"
+    
