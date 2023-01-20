@@ -1,0 +1,11 @@
+class Solution:
+    def numberOfPairs(self, nums1: List[int], nums2: List[int], diff: int) -> int:        
+        q = []
+        n = len(nums1)
+        answer = 0
+        for i in reversed(range(n)):            
+            cur = nums1[i] - nums2[i] - diff
+            position = bisect.bisect_left(q, cur)
+            answer += len(q) - position
+            bisect.insort(q, cur + diff)           
+        return answer
